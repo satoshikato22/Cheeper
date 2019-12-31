@@ -16,24 +16,6 @@ public class MutterDaoJdbcImpl implements MutterDaoJdbc{
 	@Autowired
 	JdbcTemplate jdbc;
 	@Override
-	public List<Mutter> selectMany(Mutter mutterid) throws DataAccessException {
-		// TODO 自動生成されたメソッド・スタブ
-		List<Map<String,Object>> getList = jdbc.queryForList("select * from mutter where mutterid = ?",mutterid);
-
-		//結果返却用の変数
-				List<Mutter> mutterData = new ArrayList<>();
-
-				for(Map<String,Object> map : getList) {
-					Mutter mutter = new Mutter();
-					mutter.setUserName((String)map.get("UserName"));
-					mutter.setText((String)map.get("text"));
-
-					mutterData.add(mutter);
-				}
-		return mutterData;
-	}
-
-	@Override
 	public int insertTweet(Mutter mutter) throws DataAccessException {
 		int rowNumber = jdbc.update("insert into mutter(mutterId,password,mutterName,birthday,age,role) values(?,?,?,?,?,?)",
 				mutter.getUserName(),mutter.getText());
@@ -55,6 +37,24 @@ public class MutterDaoJdbcImpl implements MutterDaoJdbc{
 				mutter.getUserName(),mutter.getText());
 
 		return rowNumber;
+	}
+
+	@Override
+	public List<Mutter> selectMany(String mutterid) throws DataAccessException {
+		// TODO 自動生成されたメソッド・スタブ
+				List<Map<String,Object>> getList = jdbc.queryForList("select * from mutter where mutterid = ?",mutterid);
+
+				//結果返却用の変数
+						List<Mutter> mutterData = new ArrayList<>();
+
+						for(Map<String,Object> map : getList) {
+							Mutter mutter = new Mutter();
+							mutter.setUserName((String)map.get("UserName"));
+							mutter.setText((String)map.get("text"));
+
+							mutterData.add(mutter);
+						}
+				return mutterData;
 	}
 
 }
