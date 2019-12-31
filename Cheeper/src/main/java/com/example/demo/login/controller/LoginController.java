@@ -1,4 +1,4 @@
-package com.example.demo.tweet.controller;
+package com.example.demo.login.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.tweet.model.User;
+import com.example.demo.login.model.User;
 
 
 @Controller

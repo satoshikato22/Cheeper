@@ -1,4 +1,4 @@
-package com.example.demo.tweet.model;
+package com.example.demo.login.model;
 
 import java.io.Serializable;
 
