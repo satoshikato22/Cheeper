@@ -1,4 +1,4 @@
-package com.example.demo.mutter.model;
+package com.example.demo.timeline.domain;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.example.demo.mutter.controller;
+package com.example.demo.timeline.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.mutter.model.Mutter;
-import com.example.demo.mutter.model.PostMutterLogic;
+import com.example.demo.timeline.domain.Mutter;
+import com.example.demo.timeline.domain.PostMutterLogic;
+import com.example.demo.timeline.service.MutterService;
 
 @Controller
 public class MutterController {
 	@Autowired
 	ServletContext application;
+	@Autowired
+	MutterService mutterService;
 
 	@GetMapping("/mutter")
 	public String GetMutter() {
