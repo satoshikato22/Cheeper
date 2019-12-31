@@ -13,8 +13,14 @@
 <input type="submit" value="つぶやく">
 </form>
 
-<div th:each="mutter : ${application.mutterList}">
+<div th:each="mutter ,stat: ${application.mutterList}">
 <p th:text="${mutter.getText()}"></p>
+
+<a th:href="@{/like(action=${'like'})}">よいね</a>：
+<!-- <p th:text="${mutter.getLike()}">人</p> -->
+<a th:href="@{/like(action=${'dislike'})}">よくないね</a>：
+<!-- <p th:text="${mutter.getDislike()}">人</p> -->
+<p th:text="${stat.index}">
 </div>
 </body>
 </html>
