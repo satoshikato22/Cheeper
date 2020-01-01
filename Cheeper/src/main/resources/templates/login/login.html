@@ -2,14 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ログイン画面へようこそ</title>
+<!-- Bootstrapの設定 -->
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<title>Login</title>
 </head>
-<body>
-<h1>ようこそ</h1>
-<form action="/login" method="post">
-ユーザー名:<input type="text" name="name"><br>
-パスワード:<input type="password" name="pass"><br>
-<input type="submit" value="ログイン">
+<body class="text-center">
+	<h1>Login</h1>
+<form th:action="@{/login}" method="post">
+	<label>ユーザーID</label><br/>
+		<input type="text" name="id" /><br />
+	<label>パスワード</label><br />
+		<input type="password" name="pass" /><br />
+	<button class="btn btn-primary" type="submit">ログイン</button>
 </form>
+	<a th:href="@{'/signup'}">ユーザー新規登録はこちら</a>
 </body>
 </html>

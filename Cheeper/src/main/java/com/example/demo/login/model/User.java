@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class User implements Serializable{
-	private String name;
+	private String id;
 	private String pass;
 }

@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.login.model.User;
+import com.example.demo.login.service.UserService;
 
 
 @Controller
 public class LoginController {
+
 	@Autowired
 	HttpSession session;
+	@Autowired
+	UserService userService;
 	@GetMapping("/login")
 	public String GetLogin() {
 
@@ -22,13 +26,19 @@ public class LoginController {
 
 	}
 	@PostMapping("/login")
-	public String PostLogin(@RequestParam("pass")String pass) {
+	public String PostLogin(@RequestParam("id")String id,@RequestParam("pass")String pass) {
 		User user = new User();
-		user.setName("test");
+		user.setId(id);
 		user.setPass(pass);
-		session.setAttribute("loginUser", user);
+		Boolean isbool = userService.selectOne(user.getId(),user.getPass());
+    	if(isbool == true) {
+    		user = userService.selectinfo(user.getId(),user.getPass());
+    		session.setAttribute("loginUser", user);
+    		return "login/loginResult";
+    	}
 
-		return "login/loginResult";
+
+		return "login/login";
 
 	}
 }
