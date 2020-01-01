@@ -5,20 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.timeline.domain.Mutter;
-import com.example.demo.timeline.repository.MutterDaoJdbc;
+import com.example.demo.timeline.domain.Cheep;
+import com.example.demo.timeline.repository.CheepDaoJdbc;
 
 @Service
-public class MutterService {
+public class CheepService {
 	@Autowired
-	MutterDaoJdbc dao;
+	CheepDaoJdbc dao;
 
-	public List<Mutter> selectMany(String mutterid){
+	public List<Cheep> selectMany(String mutterid){
 
 		return dao.selectMany(mutterid);
 	}
 
-	public boolean insertTweet(Mutter mutter) {
+	public boolean insertTweet(Cheep mutter) {
 		//insert実行
 		int rowNumber = dao.insertTweet(mutter);
 
@@ -32,7 +32,7 @@ public class MutterService {
 		return result;
 
 	}
-	public boolean insertLike(Mutter mutter) {
+	public boolean insertLike(Cheep mutter) {
 		//insert実行
 		int rowNumber = dao.insertLike(mutter);
 
@@ -46,7 +46,7 @@ public class MutterService {
 		return result;
 
 	}
-	public boolean insertDislike(Mutter mutter) {
+	public boolean insertDislike(Cheep mutter) {
 		//insert実行
 		int rowNumber = dao.insertDislike(mutter);
 
