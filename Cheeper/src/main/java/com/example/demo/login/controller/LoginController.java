@@ -34,7 +34,7 @@ public class LoginController {
     	if(isbool == true) {
     		user = userService.selectinfo(user.getId(),user.getPass());
     		session.setAttribute("loginUser", user);
-    		return "login/loginResult";
+    		return "redirect:/home";
     	}
 
 

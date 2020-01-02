@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
 <title>テスト</title>
 </head>
 <body>
-<h1>tweet</h1>
-
-<p><a href="/cheep">更新</a></p>
+<!-- ポイント：th:fragment -->
+    <div th:fragment="cheep_contents">
+        <div class="page-header">
+            <h1>tweet</h1>
+        </div>
+        <p><a href="/cheep">更新</a></p>
 <form action="/cheep" method="post">
 <input type="text" name="text">
 <input type="submit" value="つぶやく">
@@ -22,5 +26,10 @@
 <!-- <p th:text="${cheep.getDislike()}">人</p> -->
 <p th:text="${stat.index}">
 </div>
+</div>
 </body>
+
+
+
+
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,7 @@ public class CheepController {
 	CheepService cheepService;
 
 	@GetMapping("/cheep")
-	public String GetCheep() {
+	public String GetCheep(Model model) {
 
 		List<Cheep> CheepList =
 		        (List<Cheep>) application.getAttribute("CheepList");
@@ -33,14 +34,15 @@ public class CheepController {
 		      CheepList = new ArrayList<Cheep>();
 		      application.setAttribute("CheepList", CheepList);
 		    }
+		model.addAttribute("contents", "cheep/cheep :: cheep_contents");
 
 
-		return "Cheep/Cheep";
+		return "login/homeLayout";
 
 	}
 
 	@PostMapping("/cheep")
-	public String PostMapping(@RequestParam("text")String text) {
+	public String PostMapping(@RequestParam("text")String text,Model model) {
 
 		if (text != null && text.length() != 0) {
 		      // アプリケーションスコープに保存されたつぶやきリストを取得
@@ -58,7 +60,10 @@ public class CheepController {
 		      application.setAttribute("cheepList", cheepList);
 		    }
 
-		return "cheep/cheep";
+		model.addAttribute("contents", "cheep/cheep :: cheep_contents");
+
+
+		return "login/homeLayout";
 
 
 	}
