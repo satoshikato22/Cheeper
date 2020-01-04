@@ -1,4 +1,4 @@
-INSERT INTO t_cheeps
+INSERT INTO m_users
 (
     user_id
   , user_name
