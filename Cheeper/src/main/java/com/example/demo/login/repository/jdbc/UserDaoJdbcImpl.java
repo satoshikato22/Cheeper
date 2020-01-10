@@ -1,5 +1,7 @@
 package com.example.demo.login.repository.jdbc;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,32 @@ public class UserDaoJdbcImpl implements UserDao{
 			user.setId((String)map.get("userid"));
 			user.setPass((String)map.get("password"));
 			return user;
+	}
+
+	@Override
+	public User updateOne(User user) throws DataAccessException {
+		// TODO 自動生成されたメソッド・スタブ
+
+		return null;
+	}
+
+	@Override
+	public List<User> selectMany(String id) throws DataAccessException {
+		// TODO 自動生成されたメソッド・スタブ
+		List<Map<String,Object>> getList = jdbc.queryForList("select * from m_users where user_id = ?",id);
+		//結果返却用の変数
+		List<User> UserDetail = new ArrayList<>();
+
+		//取得したデータを結果返却用のListに格納していく
+		for(Map<String,Object> map : getList) {
+			User User = new User();
+			User.setId((String)map.get("user_id"));
+			User.setUser_name((String)map.get("user_name"));
+			User.setPass((String)map.get("password"));
+
+			UserDetail.add(User);
+		}
+		return UserDetail;
 	}
 
 }

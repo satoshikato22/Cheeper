@@ -1,5 +1,7 @@
 package com.example.demo.login.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -19,5 +21,9 @@ public class UserService {
 		// TODO 自動生成されたメソッド・スタブ
 
 		return dao.selectinfo(id, password);
+	}
+	public List<User> selectMany(String id){
+
+		return dao.selectMany(id);
 	}
 }

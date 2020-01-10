@@ -32,7 +32,8 @@ public class LoginController {
 		user.setPass(pass);
 		Boolean isbool = userService.selectOne(user.getId(),user.getPass());
     	if(isbool == true) {
-    		user = userService.selectinfo(user.getId(),user.getPass());
+    		//下記のコメントアウトのせいでsessionのデータが消えていた。
+    		//user = userService.selectinfo(user.getId(),user.getPass());
     		session.setAttribute("loginUser", user);
     		return "redirect:/home";
     	}
